@@ -43,7 +43,7 @@ class HomeDashboard extends StatelessWidget {
               runSpacing: AppSpace.xs,
               children: TrainingGoal.values
                   .map((goal) =>
-                      Pill(label: goal.label, dark: goal == profile.goal))
+                      Pill(label: goal.label, selected: goal == profile.goal))
                   .toList()),
           const SizedBox(height: AppSpace.xl),
           const SectionHeader(title: 'Diese Woche'),

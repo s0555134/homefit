@@ -55,22 +55,27 @@ class SectionHeader extends StatelessWidget {
 }
 
 class Pill extends StatelessWidget {
-  const Pill({super.key, required this.label, this.dark = false});
+  const Pill(
+      {super.key,
+      required this.label,
+      this.dark = false,
+      this.selected = false});
   final String label;
   final bool dark;
+  final bool selected;
   @override
   Widget build(BuildContext context) => Container(
       padding: const EdgeInsets.symmetric(horizontal: AppSpace.sm, vertical: 6),
       decoration: BoxDecoration(
           color: dark
               ? Colors.white.withValues(alpha: .16)
-              : AppColors.surfaceMuted,
+              : selected
+                  ? AppColors.forest
+                  : AppColors.surfaceMuted,
           borderRadius: BorderRadius.circular(100)),
       child: Text(label,
-          style: Theme.of(context)
-              .textTheme
-              .labelMedium
-              ?.copyWith(color: dark ? Colors.white : AppColors.forest)));
+          style: Theme.of(context).textTheme.labelMedium?.copyWith(
+              color: dark || selected ? Colors.white : AppColors.forest)));
 }
 
 class MetricTile extends StatelessWidget {

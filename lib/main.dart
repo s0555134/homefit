@@ -87,12 +87,27 @@ class _HomeShellState extends State<HomeShell> {
           NavigationDestination(icon: Icon(Icons.insights_outlined), selectedIcon: Icon(Icons.insights_rounded), label: 'Fortschritt'),
         ],
       ),
-      floatingActionButton: index == 0 ? FloatingActionButton.extended(
-        onPressed: () => showModalBottomSheet(context: context, isScrollControlled: true, backgroundColor: Colors.transparent, builder: (_) => SetupSheet(goal: goal, equipment: equipment, onSave: (newGoal, newEquipment) => setState(() { goal = newGoal; equipment
-          ..clear()
-          ..addAll(newEquipment); })),
-        icon: const Icon(Icons.tune_rounded), label: const Text('Anpassen'),
-      ) : null,
+      floatingActionButton: index == 0
+          ? FloatingActionButton.extended(
+              onPressed: () => showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                builder: (_) => SetupSheet(
+                  goal: goal,
+                  equipment: equipment,
+                  onSave: (newGoal, newEquipment) => setState(() {
+                    goal = newGoal;
+                    equipment
+                      ..clear()
+                      ..addAll(newEquipment);
+                  }),
+                ),
+              ),
+              icon: const Icon(Icons.tune_rounded),
+              label: const Text('Anpassen'),
+            )
+          : null,
     );
   }
 }
